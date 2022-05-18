@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
+html {
+  font-family: "Koulen", cursive;
+  font-size: 25px;
+  background-color: rgb(59, 35, 35);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card {
+  padding: 1rem;
+  display: grid;
+  margin: 1rem;
+  height: fit-content;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "image text1"
+    "image text2";
+  justify-items: start;
+  max-width: 500px;
+  background-color: brown;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 5px black;
+  transition: transform 0.3s, box-shadow 0.5s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 25px black;
+  z-index: 1;
+}
+
+.card img {
+  grid-area: image;
+  max-height: 300px;
+  margin-right: 1rem;
+  filter: drop-shadow(-5px -5px aliceblue);
+}
+
+.card:hover img {
+  animation: shake 0.3s steps(2) 2 alternate forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(15deg) translateY(0) translateX(-1rem);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+  75% {
+    transform: translateY(0.5rem);
+  }
+  100% {
+    transform: rotate(-15deg) translateY(0rem) translateX(1rem);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card h2 {
+  color: aliceblue;
+  text-shadow: 2px 2px 2px black;
+  grid-area: text1;
+}
+
+.card p {
+  border-top: 0.5rem dotted aliceblue;
+  grid-area: text2;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.cervezas {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  font-family: "Koulen", cursive;
+  font-size: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="text"] {
+  font-size: 2rem;
+}
+
+.card p::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.card p {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
